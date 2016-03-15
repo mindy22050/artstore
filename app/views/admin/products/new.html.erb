@@ -18,4 +18,17 @@
     <%= f.input :price %>
   </div>
 
+  <% if @photo.image.present? %>
+    <span>目前商品圖</span> <br>
+    <%= image_tag(@photo.image.thumb.url) %> <%# image_tag是rails顯示圖片的一個方法 %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.simple_fields_for @photo do |c| %>
+      <% c.input :image, as: :file %>
+    <% end %>
+  </div>
+
+
 <%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
+<% end %>

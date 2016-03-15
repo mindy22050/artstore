@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products
+  resources :products do # resources會幫我們生成7種路徑, index, new, show....
+    member do  # member是一種方法，對product下的特定成員做這件事
+      post :add_to_cart #對網頁執行add_to_cart這個action的post
+    end
+  end
+#RubyonRails好難，難如登天
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
